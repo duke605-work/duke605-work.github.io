@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=800" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+        <style>
+            [data-ng-app] table tr td {
+                vertical-align: middle;
+            }
+
+            [data-ng-app] table td input {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div data-ng-app="cashout" data-ng-controller="cashoutController">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Denomination</th>
+                        <th>Number</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0.05x</td>
+                        <td><input data-ng-model="employee.nickelCount" data-ng-change="employee.nickelTotal=(employee.nickelCount * 5) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.nickelTotal" data-ng-change="employee.nickelCount=employee.nickelTotal / 0.05" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>0.10x</td>
+                        <td><input data-ng-model="employee.dimeCount" data-ng-change="employee.dimeTotal=(employee.dimeCount * 10) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.dimeTotal" data-ng-change="employee.dimeCount=employee.dimeTotal / 0.10" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>0.25x</td>
+                        <td><input data-ng-model="employee.quarterCount" data-ng-change="employee.quarterTotal=(employee.quarterCount * 25) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.quarterTotal" data-ng-change="employee.quarterCount=employee.quarterTotal / 0.25" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>1.00x</td>
+                        <td><input data-ng-model="employee.loonieCount" data-ng-change="employee.loonieTotal=employee.loonieCount" type="number"></td>
+                        <td><input data-ng-model="employee.loonieTotal" data-ng-change="employee.loonieCount=employee.loonieTotal" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>2.00x</td>
+                        <td><input data-ng-model="employee.toonieCount" data-ng-change="employee.toonieTotal=(employee.toonieCount * 200) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.toonieTotal" data-ng-change="employee.toonieCount=employee.toonieTotal / 2" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>5.00x</td>
+                        <td><input data-ng-model="employee.fiveCount" data-ng-change="employee.fiveTotal=(employee.fiveCount * 500) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.fiveTotal" data-ng-change="employee.fiveCount=employee.fiveTotal / 5" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>10.00x</td>
+                        <td><input data-ng-model="employee.tenCount" data-ng-change="employee.tenTotal=(employee.tenCount * 1000) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.tenTotal" data-ng-change="employee.tenCount=employee.tenTotal / 5" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>20.00x</td>
+                        <td><input data-ng-model="employee.twentyCount" data-ng-change="employee.twentyTotal=(employee.twentyCount * 2000) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.twentyTotal" data-ng-change="employee.twentyCount=employee.twentyTotal / 20" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>50.00x</td>
+                        <td><input data-ng-model="employee.fiftyCount" data-ng-change="employee.fiftyTotal=(employee.fiftyCount * 5000) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.fiftyTotal" data-ng-change="employee.fiftyCount=employee.fiftyTotal / 50" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>100.00x</td>
+                        <td><input data-ng-model="employee.hundredCount" data-ng-change="employee.hundredTotal=(employee.hundredCount * 10000) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.hundredTotal" data-ng-change="employee.hundredCount=employee.hundredTotal / 100" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>Rolled 0.05x</td>
+                        <td><input data-ng-model="employee.rolledNickelCount" data-ng-change="employee.rolledNickelTotal=(employee.rolledNickelCount * 200) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.rolledNickelTotal" data-ng-change="employee.rolledNickelCount=employee.rolledNickelTotal / 2" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>Rolled 0.10x</td>
+                        <td><input data-ng-model="employee.rolledDimeCount" data-ng-change="employee.rolledDimeTotal=(employee.rolledDimeCount * 500) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.rolledDimeTotal" data-ng-change="employee.rolledDimeCount=employee.rolledDimeTotal / 5" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>Rolled 0.25x</td>
+                        <td><input data-ng-model="employee.rolledQuarterCount" data-ng-change="employee.rolledQuarterTotal=(employee.rolledQuarterCount * 1000) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.rolledQuarterTotal" data-ng-change="employee.rolledQuarterCount=employee.rolledQuarterTotal / 10" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>Rolled 1.00x</td>
+                        <td><input data-ng-model="employee.rolledLoonieCount" data-ng-change="employee.rolledLoonieTotal=(employee.rolledLoonieCount * 2500) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.rolledLoonieTotal" data-ng-change="employee.rolledLoonieCount=employee.rolledLoonieTotal / 25" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td>Rolled 2.00x</td>
+                        <td><input data-ng-model="employee.rolledToonieCount" data-ng-change="employee.rolledToonieTotal=(employee.rolledToonieCount * 5000) / 100.0" type="number"></td>
+                        <td><input data-ng-model="employee.rolledToonieTotal" data-ng-change="employee.rolledToonieCount=employee.rolledToonieTotal / 50" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td class="active"></td>
+                        <td class="active"><strong>Sub Total</strong></td>
+                        <td class="info">{{ employee.rolledDimeTotal + employee.rolledNickelTotal + employee.rolledQuarterTotal +
+                            employee.rolledLoonieTotal + employee.rolledToonieTotal + employee.nickelTotal + employee.dimeTotal +
+                            employee.quarterTotal + employee.loonieTotal + employee.toonieTotal + employee.fiveTotal + employee.tenTotal +
+                            employee.twentyTotal + employee.fiftyTotal + employee.hundredTotal
+                            | currency:'$' }}</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">VLT Tickets</td>
+                        <td><input data-ng-model="employee.vltTotal" type="number" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Interac</td>
+                        <td><input data-ng-model="employee.interacTotal" type="number" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Tabs</td>
+                        <td><input data-ng-model="employee.tabsTotal" type="number" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Receipts</td>
+                        <td><input data-ng-model="employee.receiptsTotal" type="number" /></td>
+                    </tr>
+                    <tr>
+                        <td class="active"></td>
+                        <td class="active"><strong>Sub Total</strong></td>
+                        <td class="info">{{ employee.vltTotal + employee.interacTotal + employee.tabsTotal + employee.receiptsTotal | currency:'$' }}</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">Over All Total</td>
+                        <td>{{ employee.vltTotal + employee.interacTotal + employee.tabsTotal + employee.receiptsTotal +
+                            employee.rolledDimeTotal + employee.rolledNickelTotal + employee.rolledQuarterTotal +
+                            employee.rolledLoonieTotal + employee.rolledToonieTotal + employee.nickelTotal + employee.dimeTotal +
+                            employee.quarterTotal + employee.loonieTotal + employee.toonieTotal + employee.fiveTotal + employee.tenTotal +
+                            employee.twentyTotal + employee.fiftyTotal + employee.hundredTotal | currency:'$' }}</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">Subtract Float</td>
+                        <td>{{ 250 | currency:'$' }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Total</td>
+                        <td>{{ (employee.vltTotal + employee.interacTotal + employee.tabsTotal + employee.receiptsTotal +
+                            employee.rolledDimeTotal + employee.rolledNickelTotal + employee.rolledQuarterTotal +
+                            employee.rolledLoonieTotal + employee.rolledToonieTotal + employee.nickelTotal + employee.dimeTotal +
+                            employee.quarterTotal + employee.loonieTotal + employee.toonieTotal + employee.fiveTotal + employee.tenTotal +
+                            employee.twentyTotal + employee.fiftyTotal + employee.hundredTotal) - 250 | currency:'$' }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Tape Total</td>
+                        <td><input data-ng-model="employee.tapeTotal" type="number" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Over / Short</td>
+                        <td>{{ ((employee.vltTotal + employee.interacTotal + employee.tabsTotal + employee.receiptsTotal +
+                            employee.rolledDimeTotal + employee.rolledNickelTotal + employee.rolledQuarterTotal +
+                            employee.rolledLoonieTotal + employee.rolledToonieTotal + employee.nickelTotal + employee.dimeTotal +
+                            employee.quarterTotal + employee.loonieTotal + employee.toonieTotal + employee.fiveTotal + employee.tenTotal +
+                            employee.twentyTotal + employee.fiftyTotal + employee.hundredTotal) - 250) - employee.tapeTotal | currency:'$' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            (function() {
+                var app = angular.module('cashout', []);
+
+                app.controller('cashoutController', function ($scope) {
+                    $scope.employee = {};
+                });
+            })();
+        </script>
+    </body>
+</html>
